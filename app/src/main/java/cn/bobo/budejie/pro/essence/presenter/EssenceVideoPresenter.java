@@ -2,6 +2,7 @@ package cn.bobo.budejie.pro.essence.presenter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class EssenceVideoPresenter extends BasePresener {
                     }else {
                         page++;
                     }
+
 
                     onUIThreadListener.onResult(postsListBean.getList());
                 }

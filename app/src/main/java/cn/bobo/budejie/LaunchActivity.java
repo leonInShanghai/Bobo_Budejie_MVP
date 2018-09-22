@@ -8,7 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.LinearLayout;
+
+import java.util.List;
+
 import cn.bobo.budejie.MainActivity;
+import cn.bobo.budejie.bean.PostsListBean;
+import cn.bobo.budejie.pro.base.presenter.BasePresener;
+import cn.bobo.budejie.pro.essence.presenter.EssenceVideoPresenter;
 
 /**
  * Created by Leon on 2018/9/2.
@@ -61,6 +67,18 @@ public class LaunchActivity extends Activity {
             }
         });
 
+        EssenceVideoPresenter presenter = new EssenceVideoPresenter(this);
+        presenter.getEssenceList(0, true, new BasePresener.OnUIThreadListener<List<PostsListBean.PostList>>() {
+            @Override
+            public void onResult(List<PostsListBean.PostList> result) {
+
+            }
+        });
+
+
+    }
+}
+
 //        Google工程师想到了你再开发中很多方法用不到  这是老方法↓ 新方法↑
 //        objectAnimator.addListener(new Animator.AnimatorListener() {
 //            @Override
@@ -86,6 +104,3 @@ public class LaunchActivity extends Activity {
 //
 //            }
 //        });
-    }
-}
-

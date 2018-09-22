@@ -24,8 +24,8 @@ public class EssenceVideoModel extends BaseModel {
     }
 
     private String getUrl(){
-        //拼接请求接口
-        return getServerUrl().concat("api/api_open.php");
+        //拼接请求接口 上次少了一个 / 找bug找半天
+        return getServerUrl().concat("/api/api_open.php");
     }
 
     /**

@@ -1,5 +1,7 @@
 package cn.bobo.budejie.http.impl;
 
+import android.util.Log;
+
 import java.util.HashMap;
 
 import cn.bobo.budejie.http.IHttpCommand;

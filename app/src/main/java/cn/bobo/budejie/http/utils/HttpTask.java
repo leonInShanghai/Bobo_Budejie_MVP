@@ -33,7 +33,7 @@ public class HttpTask extends AsyncTask<String,Void,String>{
 
     @Override
     protected void onPostExecute(String result) {
-        super.onPostExecute(result);
+       // super.onPostExecute(result);
         if (this.onHttpResultListener != null){
             this.onHttpResultListener.onResult(result);
         }

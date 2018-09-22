@@ -17,6 +17,7 @@ public abstract class BaseModel implements MvpModel{
     }
 
     public String getServerUrl(){
+        //http://api.budejie.com/api/api_open.php
         return "http://api.budejie.com";
     }
 }
