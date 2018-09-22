@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:circle="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <!-- xmlns:circle="http://schemas.android.com/apk/res/cn.bobo.budejie"-->
 
     <LinearLayout
@@ -20,6 +21,139 @@
             circle:civ_border_overlay="true"
             android:src="@drawable/item_essence_header_default"
             circle:civ_fill_color="@android:color/transparent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/margin_left_5_dp">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_essence_name_size"
+                android:textColor="@color/main_bottom_text_select"
+                android:text="热点追踪"/>
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/item_essence_name_size"
+                android:textColor="@color/main_bottom_text_select"
+                android:text="05-26 11:49:58"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/item_essence_name_size"
+        android:textColor="@color/main_bottom_text_select"
+        android:text="付出不亚于任何人的努力"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="@dimen/margin_left_6_dp"
+        android:layout_marginRight="@dimen/margin_left_6_dp"/>
+
+    <!--scaleType="centerCrop" : 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) -->
+    <ImageView
+        android:id="@+id/iv_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_6_dp"
+        android:layout_marginRight="@dimen/margin_left_6_dp"
+        android:layout_marginTop="@dimen/margin_left_5_dp"
+        android:src="@drawable/item_essence_video_bg"
+        android:scaleType="centerCrop"/>
+
+    <!--这个view只是起到一个分割线的作用-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main_bottom_text_normal"
+        android:layout_marginTop="@dimen/margin_left_6_dp"/>
+
+    <!--scaleType="fitXY":是将原图进行横方向（即XY方向）的拉伸后绘制的。-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/ll_like"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/essence_ding_selector"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:id="@+id/tv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="709"
+                android:layout_marginLeft="2dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/ll_dislike"
+            android:layout_weight="1">
+            <ImageView android:layout_height="26dp"
+                android:layout_width="26dp"
+                android:src="@drawable/essence_cai_selector"
+                android:id="@+id/iv_dislike"
+                android:scaleType="fitXY"/>
+            <TextView android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_2_dp"
+                android:id="@+id/tv_dislike"
+                android:text="709"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/ll_forword"
+            android:layout_weight="1">
+        <ImageView
+            android:layout_height="26dp"
+            android:layout_width="26dp"
+            android:src="@drawable/essence_forword_selector"
+            android:id="@+id/iv_forword"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left_2_dp"
+            android:id="@+id/tv_forword"
+            android:text="709"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/ll_comment"
+            android:layout_weight="1">
+        <ImageView android:layout_height="26dp"
+            android:layout_width="26dp"
+            android:src="@drawable/essence_commend_selector"
+            android:id="@+id/iv_comment"
+            android:scaleType="fitXY"/>
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_left_2_dp"
+            android:id="@+id/tv_comment"
+            android:text="709"/>
+    </LinearLayout>
+    </LinearLayout>
+
 
 </LinearLayout>
