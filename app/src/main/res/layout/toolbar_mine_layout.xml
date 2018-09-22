@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout android:orientation="horizontal"
+    android:layout_height="50dp"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <ImageView android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:layout_marginLeft="@dimen/margin_left_12_dp"
+            android:id="@+id/iv_left"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_weight="2">
+
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/iv_title"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:text="@string/main_mine_title_text"/>
+    </LinearLayout>
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center_vertical|right"
+        android:layout_weight="1">
+
+         <ImageView android:layout_height="25dp"
+             android:layout_width="25dp"
+             android:id="@+id/iv_model"
+             android:layout_marginRight="@dimen/margin_left_12_dp"
+             android:src="@drawable/main_mine_night_model_selector"/>
+
+        <ImageView android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/iv_setting"
+            android:src="@drawable/main_mine_setting_selector"/>
+    </LinearLayout>
+</LinearLayout>

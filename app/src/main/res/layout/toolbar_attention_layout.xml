@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <LinearLayout android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:layout_height="50dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <ImageView android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:layout_marginLeft="@dimen/margin_left_12_dp"
+            android:src="@drawable/main_newpost_audit_btn_selector"
+            android:id="@+id/iv_left"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_weight="2">
+
+        <android.support.design.widget.TabLayout
+            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/tab_attention"
+            app:tabIndicatorColor="@color/essence_tab_text_color_press"
+            app:tabTextColor="@color/essence_tab_text_color_normal"
+            app:tabSelectedTextColor="@color/essence_tab_text_color_press"
+            app:tabMode="scrollable"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:gravity="center_vertical|right"
+        android:layout_weight="1">
+
+        <ImageView android:layout_height="25dp"
+            android:layout_width="25dp" android:id="@+id/iv_right"
+            android:layout_marginRight="@dimen/margin_left_12_dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+    <!--<LinearLayout android:background="@android:color/white"-->
+        <!--android:clickable="true"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <!--<LinearLayout android:orientation="horizontal"-->
+        <!--android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center_vertical" android:layout_weight="1">-->
+
+        <!--<ImageView android:layout_height="25dp" android:layout_width="25dp" android:layout_marginLeft="@dimen/margin_left_12_dp" android:src="@drawable/main_essence_btn_selector" android:id="@+id/iv_left"/>-->
+
+    <!--</LinearLayout>-->
+
+
+<!--<LinearLayout android:orientation="horizontal" android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center" android:layout_weight="2">-->
+
+    <!--<android.support.design.widget.TabLayout android:layout_height="40dp" android:layout_width="wrap_content" android:id="@+id/tab_attention" app:tabIndicatorColor="@color/essence_tab_text_color_press" app:tabTextColor="@color/essence_tab_text_color_normal" app:tabSelectedTextColor="@color/essence_tab_text_color_press" app:tabMode="scrollable"/>-->
+
+<!--</LinearLayout>-->
+
+
+<!--<LinearLayout android:orientation="horizontal" android:layout_height="match_parent" android:layout_width="0dp" android:gravity="center_vertical|right" android:layout_weight="1">-->
+
+    <!--<ImageView android:layout_height="25dp" android:layout_width="25dp" android:id="@+id/iv_right" android:layout_marginRight="@dimen/margin_left_12_dp"/>-->
+
+<!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
