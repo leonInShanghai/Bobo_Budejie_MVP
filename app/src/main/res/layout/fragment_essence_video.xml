@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:textColor="@color/essence_tab_text_color_press"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/tv_content"/>
+
 
 </FrameLayout>

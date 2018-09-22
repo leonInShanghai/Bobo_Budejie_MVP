@@ -18,6 +18,9 @@ public abstract class BaseFragment<P extends MvpBaseaPresenter> extends MvpFragm
 
     private View viewContent;//缓存视图View
 
+    /**是否初始化 默认为false*/
+    private boolean isInit;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +29,6 @@ public abstract class BaseFragment<P extends MvpBaseaPresenter> extends MvpFragm
         if (viewContent == null){
             viewContent = inflater.inflate(getContentView(),container,false);
             initContentView(viewContent);
-            initData();
         }
 
         //判断Fragment 对应的 Activity 是否存在这个视图
@@ -37,6 +39,15 @@ public abstract class BaseFragment<P extends MvpBaseaPresenter> extends MvpFragm
             parent.removeView(viewContent);
         }
         return viewContent;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (!isInit) {
+            this.isInit = true;
+            initData();
+        }
     }
 
     @Override

@@ -67,13 +67,7 @@ public class LaunchActivity extends Activity {
             }
         });
 
-        EssenceVideoPresenter presenter = new EssenceVideoPresenter(this);
-        presenter.getEssenceList(0, true, new BasePresener.OnUIThreadListener<List<PostsListBean.PostList>>() {
-            @Override
-            public void onResult(List<PostsListBean.PostList> result) {
 
-            }
-        });
 
 
     }
