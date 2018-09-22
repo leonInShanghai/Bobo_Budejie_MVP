@@ -17,8 +17,8 @@ public class HttpTask extends AsyncTask<String,Void,String>{
     private HttpUtils.OnHttpResultListener onHttpResultListener;
     private IHttpCommand httpCommand;
 
-    public HttpTask(String url, IRequestParam requestParam, HttpUtils.OnHttpResultListener
-            onHttpResultListener, SystemHttpCommand httpCommand) {
+    public HttpTask(String url, IRequestParam requestParam,SystemHttpCommand httpCommand,
+                    HttpUtils.OnHttpResultListener onHttpResultListener) {
         this.url = url;
         this.requestParam = requestParam;
         this.onHttpResultListener = onHttpResultListener;

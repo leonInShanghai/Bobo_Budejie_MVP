@@ -14,7 +14,7 @@ public class PostsListBean {
      */
 
     private Info info;
-    private List<ListBean> list;
+    private List<PostList> list;
 
     public Info getInfo() {
         return info;
@@ -24,11 +24,11 @@ public class PostsListBean {
         this.info = info;
     }
 
-    public List<ListBean> getList() {
+    public List<PostList> getList() {
         return list;
     }
 
-    public void setList(List<ListBean> list) {
+    public void setList(List<PostList> list) {
         this.list = list;
     }
 
@@ -78,7 +78,7 @@ public class PostsListBean {
         }
     }
 
-    public static class ListBean {
+    public static class PostList {
         /**
          * id : 14568862
          * user_id : 10924981
