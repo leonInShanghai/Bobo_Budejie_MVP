@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:circle="http://schemas.android.com/apk/res-auto">
+    <!-- xmlns:circle="http://schemas.android.com/apk/res/cn.bobo.budejie"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <cn.bobo.budejie.pro.essence.view.views.CircleNetworkImageImage
+            android:id="@+id/iv_header"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/margin_left_12_dp"
+            circle:civ_border_width="1dp"
+            circle:civ_border_color="@android:color/transparent"
+            circle:civ_border_overlay="true"
+            android:src="@drawable/item_essence_header_default"
+            circle:civ_fill_color="@android:color/transparent"/>
+    </LinearLayout>
+
+</LinearLayout>
