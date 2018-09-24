@@ -4,12 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_mine_text"
-        android:textSize="30sp"
-        android:textColor="@color/main_bottom_text_select"/>
+
 
 </LinearLayout>
 

@@ -3,9 +3,22 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="margin_left_12_dp">12dp</dimen>
-    <dimen name="margin_left_5_dp">5dp</dimen>
     <dimen name="margin_left_6_dp">6dp</dimen>
+    <dimen name="margin_left_8_dp">8dp</dimen>
+    <dimen name="margin_left_10_dp">10dp</dimen>
+    <dimen name="margin_left_15_dp">15dp</dimen>
+    <dimen name="margin_left_5_dp">5dp</dimen>
     <dimen name="margin_left_2_dp">2dp</dimen>
+    <dimen name="margin_left_30_dp">30dp</dimen>
+    <dimen name="margin_left_25_dp">25dp</dimen>
+
+    <dimen name="login_register_button_size">70dp</dimen>
+
+    <dimen name="text_size_10_sp">10sp</dimen>
+    <dimen name="text_size_12_sp">12sp</dimen>
+    <dimen name="text_size_14_sp">14sp</dimen>
+    <dimen name="text_size_16_sp">16sp</dimen>
+    <dimen name="text_size_18_sp">18sp</dimen>
 
     <dimen name="item_essence_name_size">15sp</dimen>
 

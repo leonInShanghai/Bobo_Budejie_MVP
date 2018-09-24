@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by Leon on 2018/9/22.
- * Functions:
+ * Functions: 解析网络请求的model
  */
 public class PostsListBean {
 

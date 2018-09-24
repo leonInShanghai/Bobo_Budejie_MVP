@@ -8,6 +8,7 @@ import java.util.List;
 
 import cn.bobo.budejie.bean.PostsListBean;
 import cn.bobo.budejie.http.utils.HttpUtils;
+import cn.bobo.budejie.pro.base.model.BaseModel;
 import cn.bobo.budejie.pro.base.presenter.BasePresener;
 import cn.bobo.budejie.pro.essence.model.EssenceVideoModel;
 
@@ -16,9 +17,7 @@ import cn.bobo.budejie.pro.essence.model.EssenceVideoModel;
  * Functions: .MVP 中的 P 层 ：处理数据返回之后的逻辑
  * 例如：数据解析 等等业务逻辑
  */
-public class EssenceVideoPresenter extends BasePresener {
-
-    private EssenceVideoModel essenceVideoModel;
+public class EssenceVideoPresenter extends BasePresener<EssenceVideoModel> {
 
     private int page = 0;
 
@@ -27,7 +26,11 @@ public class EssenceVideoPresenter extends BasePresener {
 
     public EssenceVideoPresenter(Context context) {
         super(context);
-        this.essenceVideoModel = new EssenceVideoModel(context);
+    }
+
+    @Override
+    public EssenceVideoModel bingModel() {
+        return new EssenceVideoModel(getContext());
     }
 
     //定义解析的函数
@@ -39,7 +42,7 @@ public class EssenceVideoPresenter extends BasePresener {
         }
 
         //执行网络请求
-        essenceVideoModel.getEssenceList(type, page, maxtime, new HttpUtils.OnHttpResultListener() {
+        getModel().getEssenceList(type, page, maxtime, new HttpUtils.OnHttpResultListener() {
             @Override
             public void onResult(String result) {
                 if (TextUtils.isEmpty(result)){
