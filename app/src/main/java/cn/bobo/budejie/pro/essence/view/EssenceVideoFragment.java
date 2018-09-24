@@ -1,7 +1,10 @@
 package cn.bobo.budejie.pro.essence.view;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import com.andview.refreshview.XRefreshView;
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ import cn.bobo.budejie.mvp.presenter.impl.MvpBaseaPresenter;
 import cn.bobo.budejie.pro.base.presenter.BasePresener;
 import cn.bobo.budejie.pro.base.view.BaseFragment;
 import cn.bobo.budejie.pro.essence.presenter.EssenceVideoPresenter;
+import cn.bobo.budejie.pro.essence.view.adapter.EssenceVideoAdapter;
 import cn.bobo.budejie.utils.ToastUtil;
 
 /**
@@ -21,8 +25,11 @@ public class EssenceVideoFragment extends BaseFragment {
 
     private int mType = 0;
     private String mTitle;
-
     private EssenceVideoPresenter presenter;
+
+    private RecyclerView recyclerView;
+    private XRefreshView xRefreshView;
+    private EssenceVideoAdapter videoAdapter;
 
     public void setType(int mType){
         this.mType = mType;
@@ -44,8 +51,8 @@ public class EssenceVideoFragment extends BaseFragment {
     }
 
     @Override
-    public void initContentView(View viewContent) {
-
+    public void initContentView(View contentView) {
+        xRefreshView = (XRefreshView)contentView.findViewById(R.id.xrefre)
     }
 
     @Override

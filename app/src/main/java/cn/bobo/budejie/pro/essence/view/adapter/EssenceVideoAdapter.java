@@ -39,11 +39,23 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
         this.list = list;
     }
 
+    /**
+     * 配置viewholder
+     * @param view
+     * @return
+     */
     @Override
     public VideoAdapterViewHolder getViewHolder(View view) {
         return new VideoAdapterViewHolder(view,false);
     }
 
+    /**
+     * 创建布局
+     * @param parent
+     * @param viewType
+     * @param isItem
+     * @return
+     */
     @Override
     public VideoAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType, boolean isItem) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_essence_video_layout,parent,
@@ -52,6 +64,12 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
         return holder;
     }
 
+    /**
+     * 给我们的视图绑定数据
+     * @param holder
+     * @param position
+     * @param isItem
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(VideoAdapterViewHolder holder, int position, boolean isItem) {
@@ -71,6 +89,11 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
         return this.list.size();
     }
 
+    /**
+     * volley框架
+     * @param imageView
+     * @param url
+     */
     private void loadImage(NetworkImageView imageView,String url){
         RequestQueue queue = Volley.newRequestQueue(context);
         ImageLoader imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
