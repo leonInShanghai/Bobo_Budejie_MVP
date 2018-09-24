@@ -1,11 +1,14 @@
 package cn.bobo.budejie.pro.mine.view;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import cn.bobo.budejie.MainActivity;
 import cn.bobo.budejie.R;
 import cn.bobo.budejie.pro.base.view.BaseFragment;
+import cn.bobo.budejie.pro.base.view.item.DefaultItemBuilder;
 import cn.bobo.budejie.pro.essence.view.navigation.EssenceNavigationBuilder;
 import cn.bobo.budejie.pro.mine.view.navigation.MineNavigationBuilder;
 import cn.bobo.budejie.utils.ToastUtil;
@@ -25,6 +28,7 @@ public class MineFragment extends BaseFragment{
     @Override
     public void initContentView(View viewContent) {
         initToolBar(viewContent);
+        initItem(viewContent);
     }
 
     private void initToolBar(View viewContent){
@@ -35,7 +39,7 @@ public class MineFragment extends BaseFragment{
                 .setModelOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToastUtil.showToast(getContext(),"点击了");
+                        ToastUtil.showToast(getContext(),"点击了1");
                     }
                 })
                 .setTitle(R.string.main_mine_title_text)
@@ -43,10 +47,25 @@ public class MineFragment extends BaseFragment{
                 .setRightIconOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToastUtil.showToast(getContext(),"点击了");
+                        ToastUtil.showToast(getContext(),"点击了2");
                         Log.e("leon","click");
                     }
                 });
         builder.createAndBind((ViewGroup)viewContent);
+    }
+
+    private void initItem(View viewContent){
+        DefaultItemBuilder builder = new DefaultItemBuilder(getContext());
+        builder.setLeftIcon(R.drawable.login_unlogin_header)
+                .setLeftText(R.string.login_login_text)
+                .setRightIcon(R.drawable.item_jiantou)
+                .setOnItemClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(getActivity(),LoginActivity.class));
+                    }
+                });
+        builder.buildAndBind((ViewGroup) viewContent);
+
     }
 }

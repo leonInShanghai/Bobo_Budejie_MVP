@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/margin_left_12_dp"
+    android:paddingRight="@dimen/margin_left_12_dp"
+    android:background="@drawable/item_build_default_style"
+    android:layout_marginTop="@dimen/margin_left_10_dp">
+    <ImageView
+        android:id="@+id/iv_left"
+        android:layout_width="@dimen/margin_left_30_dp"
+        android:layout_height="@dimen/margin_left_30_dp"
+        android:src="@drawable/login_unlogin_header"/>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="@dimen/margin_left_30_dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="@dimen/text_size_16_sp"
+        android:textColor="@color/item_mine_text_color"
+        android:text="@string/login_and_register_text"
+        android:layout_marginLeft="@dimen/margin_left_10_dp"/>
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="@dimen/margin_left_25_dp"
+        android:layout_height="@dimen/margin_left_25_dp"
+        android:src="@drawable/item_jiantou"/>
+
+</LinearLayout>

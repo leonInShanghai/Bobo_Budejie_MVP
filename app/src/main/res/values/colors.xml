@@ -16,4 +16,10 @@
     <color name="login_button_color_normal">#DE6262</color>
     <color name="login_button_color_press">#DD5858</color>
 
+    <color name="item_mine_text_color">#707070</color>
+    <color name="item_build_default_normal">@android:color/white</color>
+    <color name="item_build_default_press">#F6F6F6</color>
+
+
+
 </resources>

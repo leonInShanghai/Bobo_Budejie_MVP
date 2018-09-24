@@ -8,7 +8,7 @@
     <string name="main_newpost_text">新帖</string>
     <string name="main_attention_text">关注</string>
     <string name="main_mine_title_text">我的</string>
-
+    <string name="login_and_register_text">登陆/注册</string>
 
     <string name="login_phone_text">手机号</string>
     <string name="login_password_text">密码</string>
