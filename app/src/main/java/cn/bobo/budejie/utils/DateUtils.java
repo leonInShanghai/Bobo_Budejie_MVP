@@ -1,9 +1,8 @@
 package cn.bobo.budejie.utils;
 
-import android.icu.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 
 /**
  * Created by Leon on 2018/9/23.
@@ -11,7 +10,7 @@ import android.support.annotation.RequiresApi;
  */
 public class DateUtils {
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public static String parseDate(String createTime) {
         try {
             String ret = "";

@@ -70,7 +70,7 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
      * @param position
      * @param isItem
      */
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(VideoAdapterViewHolder holder, int position, boolean isItem) {
         PostsListBean.PostList postList = this.list.get(position);
@@ -167,7 +167,5 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
             }
         }
     }
-
-
     
 }
