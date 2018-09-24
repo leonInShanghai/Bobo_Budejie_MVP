@@ -1,10 +1,12 @@
 package cn.bobo.budejie.pro.base.view.navigation;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import cn.bobo.budejie.R;
 
@@ -94,6 +96,19 @@ public abstract class NavigationBuilderAdapter implements NavigationBuilder {
             imageView.setVisibility(View.VISIBLE);
             imageView.setImageResource(imageRes);
             imageView.setOnClickListener(onClickListener);
+        }
+    }
+
+    public void setTitleTextView(int viewId,String title,View.OnClickListener onClickListener){
+        TextView textView = (TextView)getContentView().findViewById(viewId);
+        if (TextUtils.isEmpty(title)){
+            textView.setVisibility(View.GONE);
+        }else {
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(title);
+        }
+        if (onClickListener != null){
+            textView.setOnClickListener(onClickListener);
         }
     }
 

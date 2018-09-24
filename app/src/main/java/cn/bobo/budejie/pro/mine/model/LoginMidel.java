@@ -21,7 +21,8 @@ public class LoginMidel extends BaseModel{
 
     public void login(String username, String password, HttpUtils.OnHttpResultListener onHttpResultListener){
         RequestParam requestParam = new RequestParam();
-        requestParam.put("username",username);
+        //requestParam.put("username",username);
+        requestParam.put("mobile",username);
         requestParam.put("password",password);
         //http://192.168.57.1:8080/Dream/LoginServlet"
         HttpTask httpTask = new HttpTask("http://wechat.lingyongdai.cn/passport/login",

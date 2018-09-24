@@ -40,7 +40,8 @@
             android:textColorHint="@color/login_text_color"
             android:background="@drawable/login_register_psw_edit_bg"
             android:paddingLeft="@dimen/margin_left_10_dp"
-            android:paddingRight="@dimen/margin_left_10_dp"/>
+            android:paddingRight="@dimen/margin_left_10_dp"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/bt_login"

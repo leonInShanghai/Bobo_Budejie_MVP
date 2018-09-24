@@ -3,6 +3,7 @@ package cn.bobo.budejie.pro.mine.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import cn.bobo.budejie.R;
 
@@ -11,6 +12,7 @@ import cn.bobo.budejie.mvp.presenter.impl.MvpBaseaPresenter;
 import cn.bobo.budejie.pro.base.presenter.BasePresener;
 import cn.bobo.budejie.pro.base.view.BaseActivity;
 import cn.bobo.budejie.pro.mine.presenter.LoginPresenter;
+import cn.bobo.budejie.pro.mine.view.navigation.LoginNavigationBuilder;
 import cn.bobo.budejie.utils.ToastUtil;
 
 /**
@@ -34,7 +36,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initToolBar();
         initView();
+    }
+
+    private void initToolBar(){
+       LinearLayout ll_login = (LinearLayout)findViewById(R.id.ll_login);
+        LoginNavigationBuilder builder = new LoginNavigationBuilder(LoginActivity.this);
+        builder.setLeftIcon(R.drawable.login_close_selector)
+                .setTitle(R.string.login_and_register_text)
+                .setLeftIconOnClickLisener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        finish();
+                    }
+                });
+        builder.createAndBind(ll_login);
     }
 
     private void initView(){
@@ -53,7 +70,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     ToastUtil.showToast(LoginActivity.this,"登陆失败!");
                 }else {
                    // ToastUtil.showToast(LoginActivity.this,"登陆成功");
-                    ToastUtil.showToast(LoginActivity.this,result.getCode());
+                    ToastUtil.showToast(LoginActivity.this,"code:"+
+                            String.valueOf(result.getCode())+" message:"+result.getMessage());
                 }
             }
         });
