@@ -128,7 +128,6 @@ public class PostsListBean {
          * status : 4
          * original_pid :
          */
-
         private int id;
         private String user_id;
         private String name;
@@ -158,13 +157,20 @@ public class PostsListBean {
         private String weixin_url;
         private String is_gif;
         private String passtime;
+        /**bookmark  string  帖子的收藏量  */
         private String bookmark;
+        /**favourite  string  帖子的收藏量  */
         private String favourite;
+        /**love  string  收藏量  */
         private String love;
+        /**hate  string  踩的数量*/
         private String hate;
+        /**cai  string  踩的人数*/
         private String cai;
+        /**comment  string  帖子的被评论数量  */
         private String comment;
-        private String forward;
+        /**特别喜爱的*/
+        //private String forward;
         private String repost;
         private String playcount;
         private String playfcount;
@@ -176,6 +182,9 @@ public class PostsListBean {
         private String original_pid;
         private List<ThemesBean> themes;
         private List<?> top_cmt;
+        /**顶*/
+        private String ding;
+
 
         public int getId() {
             return id;
@@ -457,13 +466,22 @@ public class PostsListBean {
             this.comment = comment;
         }
 
-        public String getForward() {
-            return forward;
+        public String getDing() {
+            return ding;
         }
 
-        public void setForward(String forward) {
-            this.forward = forward;
+        public void setDing(String ding) {
+            this.ding = ding;
         }
+
+
+//        public String getForward() {
+//            return forward;
+//        }
+//
+//        public void setForward(String forward) {
+//            this.forward = forward;
+//        }
 
         public String getRepost() {
             return repost;
