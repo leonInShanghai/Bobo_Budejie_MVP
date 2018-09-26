@@ -70,7 +70,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                     ToastUtil.showToast(LoginActivity.this,"登陆失败!");
                 }else {
                    // ToastUtil.showToast(LoginActivity.this,"登陆成功");
-                    //
                     ToastUtil.showToast(LoginActivity.this,"code:"+
                             String.valueOf(result.getCode())+" message:"+result.getMessage());
                 }
