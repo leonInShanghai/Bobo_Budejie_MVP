@@ -31,6 +31,9 @@ public abstract class MvpFragment<P extends MvpBaseaPresenter> extends Fragment 
     /**绑定Presenter*/
     public abstract P bindPresenter();
 
+    public P getPresenter(){
+        return presenter;
+    }
 
     @Override
     public void onDestroyView() {

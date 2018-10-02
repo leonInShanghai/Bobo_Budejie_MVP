@@ -6,10 +6,13 @@
     android:background="@color/main_bottom_bg"
     android:clickable="true">
 
+
+    <!--android:scrollbars="none" listview 取消滚动条-->
     <ListView
         android:id="@+id/lv_attention"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         android:cacheColorHint="@android:color/transparent"/>
 
 </FrameLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:circle="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/margin_left_12_dp"
+    android:paddingRight="@dimen/margin_left_12_dp">
+
+    <cn.bobo.budejie.pro.essence.view.views.CircleNetworkImageImage
+        android:id="@+id/iv_header"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/margin_left_12_dp"
+        circle:civ_border_width="1dp"
+        circle:civ_border_color="@android:color/transparent"
+        circle:civ_border_overlay="true"
+        android:src="@drawable/item_essence_header_default"
+        circle:civ_fill_color="@android:color/transparent"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_left_10_dp">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自拍"
+            android:textSize="@dimen/text_size_16_sp"/>
+        <TextView
+            android:id="@+id/tv_attention_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_16_sp"
+            android:text="2.0万订阅量"
+            android:layout_marginTop="@dimen/margin_left_5_dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_attention"
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:text="+ 订阅"
+        android:textColor="@color/essence_tab_text_color_press"
+        android:background="@drawable/attention_list_normal"/>
+
+</LinearLayout>

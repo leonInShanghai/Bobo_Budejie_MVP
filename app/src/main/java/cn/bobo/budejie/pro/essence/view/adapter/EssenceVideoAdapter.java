@@ -24,6 +24,7 @@ import java.util.List;
 import cn.bobo.budejie.R;
 import cn.bobo.budejie.bean.PostsListBean;
 import cn.bobo.budejie.pro.essence.view.views.CircleNetworkImageImage;
+import cn.bobo.budejie.utils.VolleyUtils;
 
 /**
  * Created by Leon on 2018/9/23.
@@ -74,7 +75,8 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
     @Override
     public void onBindViewHolder(VideoAdapterViewHolder holder, int position, boolean isItem) {
         PostsListBean.PostList postList = this.list.get(position);
-        loadImage(holder.iv_header,postList.getProfile_image());
+        VolleyUtils.loadImage(context,holder.iv_header,postList.getProfile_image());
+        //loadImage(holder.iv_header,postList.getProfile_image());
         holder.tv_name.setText(postList.getName());
         holder.tv_time.setText(DateUtils.parseDate(postList.getCreate_time()));
         holder.tv_content.setText(postList.getText());
@@ -90,24 +92,22 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
     }
 
     /**
-     * volley框架
-     * @param imageView
-     * @param url
+     * 这个方法已经封装到工具类
      */
-    private void loadImage(NetworkImageView imageView,String url){
-        RequestQueue queue = Volley.newRequestQueue(context);
-        ImageLoader imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
-            @Override
-            public void putBitmap(String s, Bitmap bitmap) {
-
-            }
-            @Override
-            public Bitmap getBitmap(String s) {
-                return null;
-            }
-        });
-        imageView.setImageUrl(url,imageLoader);
-    }
+//    private void loadImage(NetworkImageView imageView,String url){
+//        RequestQueue queue = Volley.newRequestQueue(context);
+//        ImageLoader imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
+//            @Override
+//            public void putBitmap(String s, Bitmap bitmap) {
+//
+//            }
+//            @Override
+//            public Bitmap getBitmap(String s) {
+//                return null;
+//            }
+//        });
+//        imageView.setImageUrl(url,imageLoader);
+//    }
 
     public class VideoAdapterViewHolder extends RecyclerView.ViewHolder{
 
