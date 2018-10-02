@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void initToolBar(){
-       LinearLayout ll_login = (LinearLayout)findViewById(R.id.ll_login);
+        LinearLayout ll_login = (LinearLayout)findViewById(R.id.ll_login);
         LoginNavigationBuilder builder = new LoginNavigationBuilder(LoginActivity.this);
         builder.setLeftIcon(R.drawable.login_close_selector)
                 .setTitle(R.string.login_and_register_text)

@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import java.util.Arrays;
 
 import cn.bobo.budejie.R;
+import cn.bobo.budejie.pro.attention.view.adapter.AttentionAdapter;
 import cn.bobo.budejie.pro.attention.view.navation.AttentionNavigationBuilder;
 import cn.bobo.budejie.pro.base.view.BaseFragment;
 import cn.bobo.budejie.pro.essence.view.adapter.EssenceAdapter;
 
 /**
  * Created by Leon on 2018/9/9.
- * Functions:
+ * Functions:关注
  */
 public class AttentionFragment extends BaseFragment{
 
@@ -26,7 +27,7 @@ public class AttentionFragment extends BaseFragment{
     public void initContentView(View viewContent) {
         ViewPager vp_atteention = (ViewPager)viewContent.findViewById(R.id.vp_attention);
         String[] titles = getResources().getStringArray(R.array.attention_video_tab);
-        EssenceAdapter adapter = new EssenceAdapter(getFragmentManager(), Arrays.asList(titles));
+        AttentionAdapter adapter = new AttentionAdapter(getFragmentManager(), Arrays.asList(titles));
         vp_atteention.setAdapter(adapter);
         initToolBar(viewContent,vp_atteention);
     }

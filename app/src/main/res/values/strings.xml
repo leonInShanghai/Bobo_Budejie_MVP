@@ -33,6 +33,8 @@
         <item>剧情@dream@6</item>
     </array>
 
+    <string name="login_attention_register_text">注册</string>
+
     <array name="newpost_video_tab">
         <item>美女@dream@0</item>
         <item>搞笑@dream@1</item>
