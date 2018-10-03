@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.volokh.danylo.video_player_manager.ui.VideoPlayerView;
+
 import java.util.Arrays;
 
 import cn.bobo.budejie.R;
@@ -33,6 +35,8 @@ public class EssenceFragment extends BaseFragment{
         initToolBar(viewContent);
         this.tab_essence = (TabLayout)viewContent.findViewById(R.id.tab_essence);
         this.vp_essence = (ViewPager)viewContent.findViewById(R.id.vp_essence);
+
+       // VideoPlayerView
     }
 
     private void initToolBar(View viewContent){

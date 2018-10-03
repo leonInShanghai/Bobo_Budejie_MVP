@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="55dp"
     xmlns:circle="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center_vertical"
@@ -34,9 +34,9 @@
             android:id="@+id/tv_attention_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_16_sp"
+            android:textSize="@dimen/text_size_14_sp"
             android:text="2.0万订阅量"
-            android:layout_marginTop="@dimen/margin_left_5_dp"/>
+            android:layout_marginTop="@dimen/margin_left_2_dp"/>
 
     </LinearLayout>
 

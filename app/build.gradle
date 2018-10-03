@@ -33,4 +33,8 @@ dependencies {
     implementation files('libs/gson-2.2.4.jar')
     //添加下拉刷新的依赖compile 'com.huxq17.xrefreshview:xrefreshview:2.1.9'
     implementation 'com.huxq17.xrefreshview:xrefreshview:2.1.9'
+
+    // 视频播放库
+    implementation 'com.github.danylovolokh:video-player-manager:0.2.0'
+    implementation 'com.github.danylovolokh:list-visibility-utils:0.2.0'
 }
