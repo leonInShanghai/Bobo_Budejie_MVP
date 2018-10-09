@@ -37,4 +37,9 @@ dependencies {
     // 视频播放库
     implementation 'com.github.danylovolokh:video-player-manager:0.2.0'
     implementation 'com.github.danylovolokh:list-visibility-utils:0.2.0'
+
+    //Gradle 一行代码加载图片
+    implementation ("com.github.bumptech.glide:glide:4.6.1@aar") {
+        transitive = true
+    }
 }

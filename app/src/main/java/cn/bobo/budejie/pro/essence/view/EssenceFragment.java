@@ -32,28 +32,29 @@ public class EssenceFragment extends BaseFragment{
 
     @Override
     public void initContentView(View viewContent) {
-        initToolBar(viewContent);
+
         this.tab_essence = (TabLayout)viewContent.findViewById(R.id.tab_essence);
         this.vp_essence = (ViewPager)viewContent.findViewById(R.id.vp_essence);
-
+        initToolBar(viewContent,vp_essence);
        // VideoPlayerView
     }
 
-    private void initToolBar(View viewContent){
+    private void initToolBar(View viewContent,ViewPager viewPager){
         EssenceNavigationBuilder builder = new EssenceNavigationBuilder(getContext());
-        builder.setTitleIcon(R.drawable.main_essence_title)
+        builder.setUpWithViewPager(viewPager)
+                .setTitleIcon(R.drawable.main_essence_title)
                 .setLeftIcon(R.drawable.main_essence_btn_selector)
                 .setRightIcon(R.drawable.main_essence_btn_more_selector)
                 .setLeftIconOnClickLisener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToastUtil.showToast(getContext(),"点击了");
+                        ToastUtil.showToast(getContext(),"点击了left");
                     }
                 })
                 .setRightIconOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToastUtil.showToast(getContext(),"点击了");
+                        ToastUtil.showToast(getContext(),"点击了right");
                     }
                 });
         builder.createAndBind((ViewGroup)viewContent);

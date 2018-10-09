@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@android:color/white">
     <LinearLayout
@@ -45,6 +46,24 @@
             android:layout_marginRight="@dimen/margin_left_12_dp"/>
 
     </LinearLayout>
+
+    <!-- android:layout_weight="2"  这个看起来没有用的布局不要删除掉 ↓-->
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="1dp"
+        android:gravity="center">
+
+        <android.support.design.widget.TabLayout
+            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/tab_attention"
+            app:tabIndicatorColor="@color/essence_tab_text_color_press"
+            app:tabTextColor="@color/essence_tab_text_color_normal"
+            app:tabSelectedTextColor="@color/essence_tab_text_color_press"
+            app:tabMode="scrollable"/>
+
+    </LinearLayout>
+    <!-- android:layout_weight="2"  这个看起来没有用的布局不要删除掉 ↑-->
 
 </LinearLayout>
 
