@@ -23,14 +23,23 @@
     <!--我的-->
     <string name="mine_login_text">登陆/注册</string>
 
-    <array name="essence_video_tab">
-        <item>全部@dream@0</item>
+    <!--保存图片  save-->
+    <string name="save_picture">保存</string>
+
+
+    <!-- 精华 ： 1为全部，10为图片，29为段子，31为音频，41为视频，默认为1 -->
+    <!--  <item>全部@dream@0</item>
         <item>视频@dream@1</item>
         <item>声音@dream@2</item>
         <item>图片@dream@3</item>
         <item>段子@dream@4</item>
         <item>广告@dream@5</item>
-        <item>剧情@dream@6</item>
+        <item>剧情@dream@6</item>-->
+    <array name="essence_video_tab">
+        <item>全部@dream@1</item>
+        <item>视频@dream@41</item>
+        <item>图片@dream@10</item>
+        <item>段子@dream@29</item>
     </array>
 
     <string name="login_attention_register_text">注册</string>

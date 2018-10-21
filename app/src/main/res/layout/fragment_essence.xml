@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <!--android.support.design.widget.TabLayout-->
+    <!--android.support.design.widget.TabLayout
+    app:tabMode="scrollable"-->
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_essence"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/essence_tab_bg"
-        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/essence_tab_text_color_press"
         app:tabTextColor="@color/essence_tab_text_color_normal"
         app:tabIndicatorColor="@color/essence_tab_text_color_press"/>

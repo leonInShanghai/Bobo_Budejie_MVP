@@ -1,11 +1,16 @@
 package cn.bobo.budejie.pro.essence.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+
+import cn.bobo.budejie.PictureActivity;
 import cn.bobo.budejie.utils.DateUtils;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +23,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -25,6 +31,7 @@ import cn.bobo.budejie.R;
 import cn.bobo.budejie.bean.PostsListBean;
 import cn.bobo.budejie.pro.essence.view.views.CircleNetworkImageImage;
 import cn.bobo.budejie.utils.VolleyUtils;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * Created by Leon on 2018/9/23.
@@ -74,7 +81,7 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
     //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(VideoAdapterViewHolder holder, int position, boolean isItem) {
-        PostsListBean.PostList postList = this.list.get(position);
+        final PostsListBean.PostList postList = this.list.get(position);
         VolleyUtils.loadImage(context,holder.iv_header,postList.getProfile_image());
         //loadImage(holder.iv_header,postList.getProfile_image());
         holder.tv_name.setText(postList.getName());
@@ -84,6 +91,55 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
         holder.tv_dislike.setText(postList.getCai());
         holder.tv_forword.setText(postList.getRepost());
         holder.tv_comment.setText(postList.getComment());
+
+
+        // 帖子的类型，1为全部 10为图片 29为段子 31为音频 41为视频
+        switch (postList.getType()){
+            case 10: //10为图片
+                //.placeholder(R.drawable.timg)
+                holder.iv_10.setImageResource(R.drawable.timg);
+                Glide.with(context).load(postList.getImage0()).into(holder.iv_10);
+                holder.iv_10.setVisibility(View.VISIBLE);
+               if (postList.getIs_gif().equals("0")){//如果是非GIF图片支持查看大图。
+                    // 点击事件的处理
+                    holder.iv_10.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(context,PictureActivity.class);
+                            intent.putExtra("IMAGEURL",postList.getImage0());
+                            context.startActivity(intent);
+                        }
+                    });
+                }
+                holder.iv_video.setVisibility(View.GONE);
+                holder.iv_41.setVisibility(View.GONE);
+                break;
+            case 29: //29为段子
+                holder.iv_10.setVisibility(View.GONE);
+                holder.iv_video.setVisibility(View.GONE);
+                holder.iv_41.setVisibility(View.GONE);
+                break;
+            case 41: //41为视频
+                holder.iv_41.TOOL_BAR_EXIST = false;
+                // holder.iv_41.setUp(postList.getVideouri()
+                //                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "播放视频的标题，可以为空");
+                holder.iv_41.setUp(postList.getVideouri()
+                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "");
+                //holder.iv_41.loop  = true;//是否循环播放
+                Glide.with(context).load(postList.getVideouri()).into(holder.iv_41.thumbImageView);
+                holder.iv_41.widthRatio = 4;//播放比例
+                holder.iv_41.heightRatio = 3;
+                holder.iv_10.setVisibility(View.GONE);
+                holder.iv_video.setVisibility(View.GONE);
+                holder.iv_41.setVisibility(View.VISIBLE);
+                break;
+            default :
+                holder.iv_41.setVisibility(View.GONE);
+                holder.iv_10.setVisibility(View.GONE);
+                holder.iv_video.setVisibility(View.VISIBLE);
+                break;
+        }
+
     }
 
     @Override
@@ -115,6 +171,14 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
         public TextView tv_name;
         public TextView tv_time;
         public TextView tv_content;
+
+        //处理类型41 视频
+        public JCVideoPlayerStandard iv_41;
+
+        //处理类型10 图片image view
+        public ImageView iv_10;
+
+        //占位image view
         public ImageView iv_video;
 
         public LinearLayout ll_like;
@@ -141,6 +205,14 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
                         .findViewById(R.id.tv_time);
                 tv_content = (TextView) itemView
                         .findViewById(R.id.tv_content);
+
+                //处理类型41 视频item
+                iv_41 =  (JCVideoPlayerStandard)itemView.findViewById(R.id.iv_41);
+
+                //处理类型10 图片item
+                iv_10 = (ImageView)itemView.findViewById(R.id.iv_10);
+
+                //占位image view
                 iv_video = (ImageView) itemView
                         .findViewById(R.id.iv_video);
 

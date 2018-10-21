@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "cn.bobo.budejie"
-        minSdkVersion 15
+        minSdkVersion 16//15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -38,8 +38,14 @@ dependencies {
     implementation 'com.github.danylovolokh:video-player-manager:0.2.0'
     implementation 'com.github.danylovolokh:list-visibility-utils:0.2.0'
 
-    //Gradle 一行代码加载图片
-    implementation ("com.github.bumptech.glide:glide:4.6.1@aar") {
+    //glide 一行代码加载图片 带占位图
+    //implementation 'com.github.bumptech.glide:glide:3.7.0' 感觉过时了
+
+    //节操播放器用于播放视频
+    implementation 'fm.jiecao:jiecaovideoplayer:5.5'
+
+    //glide 一行代码加载图片 不带占位图  直接能加载GIF图
+    implementation("com.github.bumptech.glide:glide:4.6.1@aar") {
         transitive = true
     }
 }

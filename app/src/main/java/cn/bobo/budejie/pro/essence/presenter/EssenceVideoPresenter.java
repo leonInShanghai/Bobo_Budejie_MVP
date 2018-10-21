@@ -37,9 +37,10 @@ public class EssenceVideoPresenter extends BasePresener<EssenceVideoModel> {
     public void getEssenceList(int type, final boolean isDownRefresh,
                              final  OnUIThreadListener<List<PostsListBean.PostList>> onUIThreadListener){
 
-        if (isDownRefresh){//首次打开软件maxtime = null（下拉刷新传null）
-            maxtime = null;
-        }
+        //这里要注释掉否则起不到下拉刷新的效果。
+//        if (isDownRefresh){//首次打开软件maxtime = null（下拉刷新传null）
+//            maxtime = null;
+//        }
 
         //执行网络请求
         getModel().getEssenceList(type, page, maxtime, new HttpUtils.OnHttpResultListener() {

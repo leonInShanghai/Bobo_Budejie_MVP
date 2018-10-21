@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.bobo.budejie">
 
-    <!--使用网络的权限-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 使用网络的权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,16 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- 源代码用的这个：@style/Theme.AppCompat.DayNight.NoActionBar 我自定义了一个：LeTheme-->
-        <activity android:name=".MainActivity" android:theme="@style/LeTheme"/>
-        <!--关闭LaunchActivity的硬件加速：android:hardwareAccelerated="false"-->
-        <activity android:name=".LaunchActivity" android:hardwareAccelerated="false">
+
+        <!-- 源代码用的这个：@style/Theme.AppCompat.DayNight.NoActionBar 我自定义了一个：LeTheme -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/LeTheme" />
+        <!-- 关闭LaunchActivity的硬件加速：android:hardwareAccelerated="false" -->
+        <activity
+            android:name=".LaunchActivity"
+            android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pro.mine.view.LoginActivity" android:theme="@style/LeTheme"/>
+        <activity
+            android:name=".pro.mine.view.LoginActivity"
+            android:theme="@style/LeTheme" />
+        <activity android:name=".PictureActivity" android:theme="@style/LeTheme"></activity>
     </application>
 
 </manifest>

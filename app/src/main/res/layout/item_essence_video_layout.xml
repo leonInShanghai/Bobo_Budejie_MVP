@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:circle="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <!-- xmlns:circle="http://schemas.android.com/apk/res/cn.bobo.budejie"-->
@@ -54,7 +54,25 @@
         android:layout_marginLeft="@dimen/margin_left_6_dp"
         android:layout_marginRight="@dimen/margin_left_6_dp"/>
 
-    <!--scaleType="centerCrop" : 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) -->
+    <!-- 处理显示 item41为视频-->
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+        android:id="@+id/iv_41"
+        android:layout_width="match_parent"
+        android:layout_height="270dp" />
+
+    <!--处理显示  图片item-->
+    <ImageView
+        android:id="@+id/iv_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_6_dp"
+        android:layout_marginRight="@dimen/margin_left_6_dp"
+        android:layout_marginTop="@dimen/margin_left_5_dp"
+        android:src="@drawable/item_essence_video_bg"
+        android:scaleType="centerCrop"/>
+
+    <!--scaleType="centerCrop" : 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽)
+     占位image view-->
     <ImageView
         android:id="@+id/iv_video"
         android:layout_width="match_parent"

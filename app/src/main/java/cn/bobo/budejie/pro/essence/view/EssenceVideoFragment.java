@@ -2,6 +2,7 @@ package cn.bobo.budejie.pro.essence.view;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
@@ -17,6 +18,7 @@ import cn.bobo.budejie.pro.base.view.BaseFragment;
 import cn.bobo.budejie.pro.essence.presenter.EssenceVideoPresenter;
 import cn.bobo.budejie.pro.essence.view.adapter.EssenceVideoAdapter;
 import cn.bobo.budejie.utils.ToastUtil;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * Created by Leon on 2018/9/16.
@@ -33,7 +35,7 @@ public class EssenceVideoFragment extends BaseFragment {
     private EssenceVideoAdapter videoAdapter;
     private List<PostsListBean.PostList> postList = new ArrayList<>();
 
-    public void setType(int mType){
+    public void setType(int mType) {
         this.mType = mType;
     }
 
@@ -54,7 +56,7 @@ public class EssenceVideoFragment extends BaseFragment {
 
     @Override
     public void initContentView(View contentView) {
-        xRefreshView = (XRefreshView)contentView.findViewById(R.id.xrefreshview);
+        xRefreshView = (XRefreshView) contentView.findViewById(R.id.xrefreshview);
         //设置是否可以下拉刷新
         xRefreshView.setPullRefreshEnable(true);
         //设置是否可以上拉加载
@@ -64,19 +66,48 @@ public class EssenceVideoFragment extends BaseFragment {
         //静态加载模式不能设置foot view
         //设置支持自动刷新
         xRefreshView.setAutoLoadMore(true);
-        //设置静默加载时提前加载的item的个数
-        //xRefreshView.setPreLoadCount(2);
 
-        recyclerView = (RecyclerView)contentView.findViewById(R.id.recycler_view_test_rv);
+        //设置静默加载时提前加载的item的个数 不打开这个看不见下拉刷新
+        xRefreshView.setPreLoadCount(1);
+
+        recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view_test_rv);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        videoAdapter = new EssenceVideoAdapter(postList,getContext());
+        videoAdapter = new EssenceVideoAdapter(postList, getContext());
         recyclerView.setAdapter(videoAdapter);
         videoAdapter.setCustomLoadMoreView(new XRefreshViewFooter(getContext()));
 
-        xRefreshView.setXRefreshViewListener(new XRefreshView.SimpleXRefreshListener(){
+
+        //-----------------------------------用户滚动RecyclerView停止播-----------------------------------------
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                Log.e("newState",String.valueOf(newState));
+
+                switch (newState) {
+                    case 0: //滚动停止0
+                        break;
+                    case 1: //手指拖动1 这里先这样处理：只要用户滚动就先释放节操播放器-即停止播放
+                        JCVideoPlayer.releaseAllVideos();
+                        break;
+                    case 2: //惯性滚动2
+                        break;
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+        //-----------------------------------用户滚动RecyclerView停止播---------------------------------------
+
+        //下拉加载 上拉加载的拖拽事件监听
+        xRefreshView.setXRefreshViewListener(new XRefreshView.SimpleXRefreshListener() {
             @Override
             public void onRefresh() {
                 super.onRefresh();
@@ -89,6 +120,7 @@ public class EssenceVideoFragment extends BaseFragment {
                 loadData(false);
             }
         });
+
     }
 
     @Override
@@ -97,25 +129,25 @@ public class EssenceVideoFragment extends BaseFragment {
         loadData(true);
     }
 
-    private void loadData(final boolean isDownRefresh){
+    private void loadData(final boolean isDownRefresh) {
         presenter.getEssenceList(mType, isDownRefresh, new BasePresener.OnUIThreadListener<List<PostsListBean.PostList>>() {
             @Override
             public void onResult(List<PostsListBean.PostList> result) {
 
-                if (isDownRefresh){//下拉刷新
+                if (isDownRefresh) {//下拉刷新
                     //停止下拉刷新
                     xRefreshView.stopRefresh();
-                }else {
+                } else {
                     //停止加载更多
                     xRefreshView.stopLoadMore();
                 }
 
-                if (result == null){
-                    ToastUtil.showToast(getContext(),"加载失败请检查网络");
-                }else {
-                    ToastUtil.showToast(getContext(),"加载成功");
+                if (result == null) {
+                    ToastUtil.showToast(getContext(), "加载失败请检查网络");
+                } else {
+                    ToastUtil.showToast(getContext(), "加载成功");
                     //刷新UI
-                    if (isDownRefresh){
+                    if (isDownRefresh) {
                         //下拉刷新,清空列表
                         postList.clear();
                     }
@@ -125,4 +157,14 @@ public class EssenceVideoFragment extends BaseFragment {
             }
         });
     }
+
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("111", "onPause");
+        JCVideoPlayer.releaseAllVideos();
+    }
+
 }
