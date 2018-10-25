@@ -2,15 +2,11 @@ package cn.bobo.budejie.pro.essence.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+
 
 import cn.bobo.budejie.PictureActivity;
 import cn.bobo.budejie.utils.DateUtils;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
+
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.bumptech.glide.Glide;
 
@@ -41,6 +34,9 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
 
     private Context context;
     private List<PostsListBean.PostList> list;
+
+    private List<String> listStr;
+
 
     public EssenceVideoAdapter(List<PostsListBean.PostList> list,Context context){
         this.context = context;
@@ -100,14 +96,17 @@ public class EssenceVideoAdapter extends BaseRecyclerAdapter<EssenceVideoAdapter
                 holder.iv_10.setImageResource(R.drawable.timg);
                 Glide.with(context).load(postList.getImage0()).into(holder.iv_10);
                 holder.iv_10.setVisibility(View.VISIBLE);
-               if (postList.getIs_gif().equals("0")){//如果是非GIF图片支持查看大图。
+
+                if (postList.getIs_gif().equals("0")){//如果是非GIF图片支持查看大图。
                     // 点击事件的处理
                     holder.iv_10.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(context,PictureActivity.class);
-                            intent.putExtra("IMAGEURL",postList.getImage0());
-                            context.startActivity(intent);
+                            if (postList.getIs_gif().equals("0")) {//如果是非GIF图片支持查看大图。
+                                Intent intent = new Intent(context, PictureActivity.class);
+                                intent.putExtra("IMAGEURL", postList.getImage0());
+                                context.startActivity(intent);
+                            }
                         }
                     });
                 }

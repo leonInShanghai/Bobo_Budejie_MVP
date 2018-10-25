@@ -63,7 +63,6 @@ public class EssenceVideoPresenter extends BasePresener<EssenceVideoModel> {
                         page++;
                     }
 
-
                     onUIThreadListener.onResult(postsListBean.getList());
                 }
             }

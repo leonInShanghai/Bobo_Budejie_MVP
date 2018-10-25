@@ -1,6 +1,5 @@
 package cn.bobo.budejie.pro.base.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,12 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -39,11 +38,8 @@ public class DragScaleView extends View {
     //当前的缩放比例1.0
     private float mScaleFactor = 1.0f;
 
-    private Context context;
-
     public DragScaleView(Context context) {
         super(context);
-        this.context = context;
     }
 
     public DragScaleView(Context context, AttributeSet attrs) {
@@ -69,40 +65,66 @@ public class DragScaleView extends View {
     public void setImageResource(String url) {
 
         URL myFileUrl = null;
-        InputStream is=null;
+        InputStream is = null;
         try{
             myFileUrl = new URL(url);
         }catch(Exception e) {
             e.printStackTrace();
         }
         try{
+            //获取和设置链接
             HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
             conn.setDoInput(true);
+ //           conn.setConnectTimeout(8000);
+//            connection.setRequestProperty("Connection", "Keep-Alive");
+//            connection.setRequestProperty("Charset", "UTF-8");
+//            connection.setDoOutput(true);
+//            connection.setDoInput(true);
+            conn.setUseCaches(false);
+            conn.setRequestProperty("Charset", "UTF-8");
+
+            //打开链接
             conn.connect();
             is = conn.getInputStream();
-            bmp = BitmapFactory.decodeStream(is);
-            is.close();
-            bmpWidth = bmp.getWidth();
-            bmpHeight = bmp.getHeight();
-            //涉及的UI更新必须在主线程中进行。
-            this.post(new Runnable() {
-                @Override
-                public void run() {
-                    //此时已在主线程中，可以更新UI了
-                    initViewSize();
-                    invalidate();
-                }
-            });
 
+            //改进型
+            byte[] data= readStream(is);
+            if(data!=null) {
+                bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+            }
+
+            //老方法
+           // bmp = BitmapFactory.decodeStream(is);
+            //is.close();
+
+            //避免空指针异常
+            if (bmp != null){
+
+                bmpWidth = bmp.getWidth();
+                bmpHeight = bmp.getHeight();
+
+                //涉及的UI更新必须在主线程中进行。
+                this.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //此时已在主线程中，可以更新UI了
+                        initViewSize();
+                        invalidate();
+                    }
+                });
+            }
         }catch(IOException e) {
             e.printStackTrace();
-        }finally {
-            if(is!=null)
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(is!=null) {
                 try {
                     is.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
         }
 
     }
@@ -266,5 +288,31 @@ public class DragScaleView extends View {
         }
     }
 
+        /*
+         * 得到图片字节流 数组大小
+         * */
+        public static byte[] readStream(InputStream inStream) throws Exception{
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            int len = 0;
+
+            while ((len = inStream.read(b, 0, 1024)) != -1)
+            {
+                baos.write(b, 0, len);
+                baos.flush();
+            }
+            byte[] bytes = baos.toByteArray();
+            return bytes;
+//            ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+//            byte[] buffer = new byte[1024];
+//            int len = 0;
+//            while( (len=inStream.read(buffer)) != -1){
+//                outStream.write(buffer, 0, len);
+//            }
+//            outStream.close();
+//            inStream.close();
+//            return outStream.toByteArray();
+        }
 
 }

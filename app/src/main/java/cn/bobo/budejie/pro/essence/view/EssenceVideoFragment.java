@@ -86,7 +86,6 @@ public class EssenceVideoFragment extends BaseFragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                Log.e("newState",String.valueOf(newState));
 
                 switch (newState) {
                     case 0: //滚动停止0
@@ -104,8 +103,8 @@ public class EssenceVideoFragment extends BaseFragment {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-        //-----------------------------------用户滚动RecyclerView停止播---------------------------------------
 
+        //-----------------------------------用户滚动RecyclerView停止播---------------------------------------
         //下拉加载 上拉加载的拖拽事件监听
         xRefreshView.setXRefreshViewListener(new XRefreshView.SimpleXRefreshListener() {
             @Override
@@ -159,11 +158,9 @@ public class EssenceVideoFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void onPause() {
         super.onPause();
-        Log.e("111", "onPause");
         JCVideoPlayer.releaseAllVideos();
     }
 
