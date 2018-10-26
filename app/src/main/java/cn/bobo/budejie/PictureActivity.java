@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -87,6 +88,14 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
         setContentView(R.layout.activity_picture);
         uri = getIntent().getStringExtra("IMAGEURL");
 
+
+        /**
+         * 这段时间一直用手机连接WiFi测试APP，但是一直打不开webview的网页内容。一直显示net::ERR_PROXY_CONNECTION_FAILED
+         * 如果变成了手机4G流量就可以打开。一直以为是网络问题，结果发现是我把WiFi设置成代理了。
+         * 解决方法：取消WiFi的代理。
+         */
+
+
         //这个放方法有些图片加载不了后来不用了
         //dragView = (DragScaleView) findViewById(R.id.image);
 //        //涉及到网络请求的到子线程操作
@@ -101,12 +110,16 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
         //scrollView_le = (ScrollView)findViewById(R.id.scrollView_le);
         //imageView = (ImageView) findViewById(R.id.btn_picture_viewer);
 
+        // 遇到 ERR_PROXY_CONNECTION_FAILED
+
         picture_pro = (ProgressBar) findViewById(R.id.picture_pro);
         picture_pro.setVisibility(View.VISIBLE);
         web_view = (WebView) findViewById(R.id.web_view);
         web_view.loadUrl(uri);
         web_view.setOnLongClickListener(this);
         WebSettings webSettings = web_view.getSettings();
+        webSettings.setJavaScriptEnabled(true);//允许使用js
+        bitmap = returnBitMap(uri);
 
         //设置可任意缩放
         webSettings.setUseWideViewPort(true);
@@ -124,7 +137,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
             //设置结束加载函数
             @Override
             public void onPageFinished(WebView view, String url) {
-                bitmap = returnBitMap(url);
+                //bitmap = returnBitMap(url);
                 picture_pro.setVisibility(View.GONE);
             }
         });
@@ -133,6 +146,10 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
 
     //url转bitmap 的方法
     public Bitmap returnBitMap(final String url){
+        if (TextUtils.isEmpty(url)){
+            Toast.makeText(PictureActivity.this,"加载失败",Toast.LENGTH_SHORT).show();
+            return null;
+        }
 
         new Thread(new Runnable() {
             @Override
@@ -209,6 +226,10 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
 
     private void checkPermission() {
 
+        if (bitmap == null){
+            return;
+        }
+
         //判断是否6.0以上的手机   不是就不用
         if (Build.VERSION.SDK_INT >= 23) {
             //判断是否有这个权限
@@ -278,6 +299,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
 //                new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file.getAbsolutePath())));
         Toast.makeText(PictureActivity.this, "已保存到本地相册", Toast.LENGTH_LONG).show();
     }
+
 }
 
 

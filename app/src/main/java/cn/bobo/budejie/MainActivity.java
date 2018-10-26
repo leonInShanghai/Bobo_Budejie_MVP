@@ -24,6 +24,7 @@ import cn.bobo.budejie.pro.mine.view.MineFragment;
 import cn.bobo.budejie.pro.newpost.view.NewpostFragment;
 import cn.bobo.budejie.pro.publish.view.PublishFragment;
 import cn.bobo.budejie.utils.ToastUtil;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public class MainActivity extends AppCompatActivity implements TabHost.OnTabChangeListener{
 
@@ -110,7 +111,9 @@ public class MainActivity extends AppCompatActivity implements TabHost.OnTabChan
 
     @Override
     public void onTabChanged(String tabId) {
-        ToastUtil.showToast(this,tabId);
+        //ToastUtil.showToast(this,tabId);
+        //切换底部tab的时候在播放中的节操播放器停止播放
+        JCVideoPlayer.releaseAllVideos();
         //重置Tab样式
         for (int i = 0;i < tabItemList.size();i++){
             TabItem tabItem = tabItemList.get(i);

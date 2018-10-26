@@ -18,6 +18,7 @@ import cn.bobo.budejie.pro.base.presenter.BasePresener;
 import cn.bobo.budejie.pro.base.view.BaseFragment;
 import cn.bobo.budejie.pro.essence.presenter.EssenceVideoPresenter;
 import cn.bobo.budejie.pro.essence.view.adapter.EssenceVideoAdapter;
+import cn.bobo.budejie.pro.newpost.presenter.NewpostVideoPresenter;
 import cn.bobo.budejie.utils.ToastUtil;
 
 /**
@@ -29,7 +30,7 @@ public class NewpostVedioFragment extends BaseFragment {
     private int mType = 0;
     private String mTitle;
 
-    private EssenceVideoPresenter presenter;
+    private NewpostVideoPresenter presenter;
 
     private RecyclerView recyclerView;
     private XRefreshView xRefreshView;
@@ -46,8 +47,8 @@ public class NewpostVedioFragment extends BaseFragment {
 
     //-----------------------------leon----------------------------------
     @Override
-    public MvpBaseaPresenter bindPresenter() {
-        presenter = new EssenceVideoPresenter(getContext());
+    public NewpostVideoPresenter bindPresenter() {
+        presenter = new NewpostVideoPresenter(getContext());
         return presenter;
     }
     //-----------------------------leon----------------------------------
@@ -74,7 +75,7 @@ public class NewpostVedioFragment extends BaseFragment {
         //设置支持自动刷新
         xRefreshView.setAutoLoadMore(true);
         //设置静默加载时提前加载的item的个数
-        //xRefreshView.setPreLoadCount(2);
+        xRefreshView.setPreLoadCount(1);
 
         recyclerView = (RecyclerView)contentView.findViewById(R.id.recycler_view_test_rv);
         recyclerView.setHasFixedSize(true);

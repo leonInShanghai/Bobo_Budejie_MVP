@@ -29,22 +29,20 @@ public class NewpostFragment extends BaseFragment{
 
     @Override
     public void initContentView(View viewContent) {
-        initToolBar(viewContent);
-//        this.tab_newpost = (TabLayout)viewContent.findViewById(R.id.tab_newpost);
-//        this.vp_newpost = (ViewPager)viewContent.findViewById(R.id.vp_newpost);
-
         this.tab_newpost = (TabLayout)viewContent.findViewById(R.id.tab_essence);
         this.vp_newpost = (ViewPager)viewContent.findViewById(R.id.vp_essence);
+        initToolBar(viewContent,vp_newpost);
     }
 
-    private void initToolBar(View viewContent){
+    private void initToolBar(View viewContent,ViewPager vp_newpost){
         NewpostNavigationBuilder builder = new NewpostNavigationBuilder(getContext());
-        builder.setTitleIcon(R.drawable.main_essence_title)
+        builder.setUpWithViewPager(vp_newpost)
+                .setTitleIcon(R.drawable.main_essence_title)
                 .setLeftIcon(R.drawable.main_newpost_audit_btn_selector)
                 .setLeftIconOnClickLisener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ToastUtil.showToast(getContext(),"点击了");
+                        ToastUtil.showToast(getContext(),"点击了新帖的left");
                     }
                 });
         builder.createAndBind((ViewGroup)viewContent);

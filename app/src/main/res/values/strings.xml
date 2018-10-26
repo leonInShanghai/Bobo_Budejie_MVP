@@ -45,13 +45,10 @@
     <string name="login_attention_register_text">注册</string>
 
     <array name="newpost_video_tab">
-        <item>美女@dream@0</item>
-        <item>搞笑@dream@1</item>
-        <item>视频@dream@2</item>
-        <item>段子@dream@3</item>
-        <item>城市@dream@4</item>
-        <item>农村@dream@5</item>
-        <item>青春@dream@6</item>
+        <item>All@dream@1</item>
+        <item>video@dream@41</item>
+        <item>picture@dream@10</item>
+        <item>segments@dream@29</item>
     </array>
 
     <array name="attention_video_tab">
