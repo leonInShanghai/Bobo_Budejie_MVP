@@ -67,6 +67,7 @@ public class EssenceVideoFragment extends BaseFragment {
         //设置支持自动刷新
         xRefreshView.setAutoLoadMore(true);
 
+
         //设置静默加载时提前加载的item的个数 不打开这个看不见下拉刷新
         xRefreshView.setPreLoadCount(1);
 
@@ -138,7 +139,9 @@ public class EssenceVideoFragment extends BaseFragment {
                     xRefreshView.stopRefresh();
                 } else {
                     //停止加载更多
-                    xRefreshView.stopLoadMore();
+                    if (result != null && result.size() > 1 && videoAdapter.getAdapterItemCount() > 1) {
+                        xRefreshView.stopLoadMore();
+                    }
                 }
 
                 if (result == null) {

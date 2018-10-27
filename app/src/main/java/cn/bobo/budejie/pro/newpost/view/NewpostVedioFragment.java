@@ -117,7 +117,9 @@ public class NewpostVedioFragment extends BaseFragment {
                     xRefreshView.stopRefresh();
                 }else {
                     //停止加载更多
-                    xRefreshView.stopLoadMore();
+                    if (result != null && result.size() > 1 && videoAdapter.getAdapterItemCount() > 1) {
+                        xRefreshView.stopLoadMore();
+                    }
                 }
 
                 if (result == null){
