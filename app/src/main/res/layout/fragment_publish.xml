@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+
+    <!--下面被注释掉的是原来的代码 没有波波logo 其他没有问题能用-->
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_bg"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:contentDescription="@string/app_name"-->
+    <!--android:src="@drawable/splash_bacground"/>-->
+
+
+    <!--contentDescription:这个属性的主要功能就是为视力有障碍的人增加对控件的解释。-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/splash_bacground">
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_marginTop="150dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_icon" />
+    </LinearLayout>
 
 </LinearLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+
+<!--</LinearLayout>-->

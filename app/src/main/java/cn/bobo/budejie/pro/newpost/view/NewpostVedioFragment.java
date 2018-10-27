@@ -20,6 +20,7 @@ import cn.bobo.budejie.pro.essence.presenter.EssenceVideoPresenter;
 import cn.bobo.budejie.pro.essence.view.adapter.EssenceVideoAdapter;
 import cn.bobo.budejie.pro.newpost.presenter.NewpostVideoPresenter;
 import cn.bobo.budejie.utils.ToastUtil;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * Created by Leon on 2018/9/16.
@@ -85,6 +86,31 @@ public class NewpostVedioFragment extends BaseFragment {
         videoAdapter = new EssenceVideoAdapter(postList,getContext());
         recyclerView.setAdapter(videoAdapter);
         videoAdapter.setCustomLoadMoreView(new XRefreshViewFooter(getContext()));
+
+        //-----------------------------------用户滚动RecyclerView停止播-----------------------------------------
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+
+                switch (newState) {
+                    case 0: //滚动停止0
+                        break;
+                    case 1: //手指拖动1 这里先这样处理：只要用户滚动就先释放节操播放器-即停止播放
+                        JCVideoPlayer.releaseAllVideos();
+                        break;
+                    case 2: //惯性滚动2
+                        break;
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+        //-----------------------------------用户滚动RecyclerView停止播---------------------------------------
 
         xRefreshView.setXRefreshViewListener(new XRefreshView.SimpleXRefreshListener(){
             @Override
