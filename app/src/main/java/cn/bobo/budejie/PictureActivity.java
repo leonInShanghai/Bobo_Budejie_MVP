@@ -92,7 +92,7 @@ public class PictureActivity extends AppCompatActivity implements View.OnLongCli
         /**
          * 这段时间一直用手机连接WiFi测试APP，但是一直打不开webview的网页内容。一直显示net::ERR_PROXY_CONNECTION_FAILED
          * 如果变成了手机4G流量就可以打开。一直以为是网络问题，结果发现是我把WiFi设置成代理了。
-         * 解决方法：取消WiFi的代理。
+         * 解决方法：取消WiFi的代理。commet to github
          */
 
 
